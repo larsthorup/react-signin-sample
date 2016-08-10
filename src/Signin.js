@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
 class Signin extends Component {
-  render() {
+  render () {
     return (
-      <button>Signin</button>
+      <form onSubmit={this.onSubmit}>
+        <button type="submit">Signin</button>
+      </form>
     );
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.signingIn();
   }
 }
 
