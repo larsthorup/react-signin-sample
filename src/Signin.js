@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Signin extends Component {
+  constructor () {
+    super();
+    this.state = {account: ''};
+  }
+
   render () {
     return (
       <form onSubmit={this.onSubmit}>
