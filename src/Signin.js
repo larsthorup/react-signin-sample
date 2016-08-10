@@ -4,14 +4,19 @@ class Signin extends Component {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Signin</button>
+        <input type="text" onChange={this.onChange}/>
+        <button type="submit">Sign In</button>
       </form>
     );
   }
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.signingIn();
+    this.props.signingIn(this.state);
+  }
+
+  onChange = (e) => {
+    this.setState({account: e.target.value});
   }
 }
 
