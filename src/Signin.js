@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  border-color: ${props => props.type === 'submit' ? 'red' : 'black'};
+`;
+
+const Input = styled.input`
+  color: blue;
+`;
 
 class Signin extends Component {
   constructor () {
@@ -8,9 +17,9 @@ class Signin extends Component {
 
   render () {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input type="text" onChange={this.onChange}/>
-        <button type="submit">Sign In</button>
+      <form className={this.props.className} onSubmit={this.onSubmit}>
+        <Input type="text" onChange={this.onChange}/>
+        <Button type="submit">Sign In</Button>
       </form>
     );
   }
@@ -25,4 +34,17 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default styled(Signin)`
+  background-color: orange;
+`;
+
+
+// Note: these are the same styled components using plain ES5
+/* const Button = */ styled('button')(
+['border-color: ', ';'],
+function (props) {
+  return props.type === 'submit' ? 'red' : 'black';
+}
+);
+
+/* const Input = */ styled('input')(['color: green;'])
